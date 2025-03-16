@@ -79,5 +79,7 @@ button:hover {
 	color: #F6F8D5;
 	border-radius: 5px;
 	padding: 20px;
+	margin: 0 20px;
+	text-align: center;
 }
 
