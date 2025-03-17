@@ -32,8 +32,23 @@ form.addEventListener('submit', e => {
 	loginBtn.disabled = true
 
 	setTimeout(() => {
-		localStorage.setItem('user', email)
-		showWelcomeMessage(email)
+		fetch("auth.php", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ email, password })
+		})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					localStorage.setItem("user", email);
+					showWelcomeMessage(email);
+				} else {
+					errorMessage.textContent = data.message;
+					loginBtn.textContent = "Ingresar";
+					loginBtn.disabled = false;
+				}
+			})
+			.catch(error => console.error("Error:", error));
 	}, 1500)
 })
 
