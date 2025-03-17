@@ -2,7 +2,6 @@ const form = document.getElementById('loginForm')
 const emailInput = document.getElementById('email')
 const passwordInput = document.getElementById('password')
 const loginBtn = document.getElementById('loginBtn')
-const logoutBtn = document.getElementById('logoutBtn')
 const errorMessage = document.getElementById('errorMessage')
 
 // Verificar si ya hay sesión iniciada
@@ -50,11 +49,6 @@ form.addEventListener('submit', e => {
 			})
 			.catch(error => console.error("Error:", error));
 	}, 1500)
-})
-
-logoutBtn.addEventListener('click', () => {
-	localStorage.removeItem('user')
-	location.reload()
 })
 
 function showWelcomeMessage(user) {
